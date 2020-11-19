@@ -1,0 +1,193 @@
+.cuerpo-registro{
+    background: url("../images/fondo.png") no-repeat center center fixed;
+    background-size: cover;
+}
+
+.main-section{
+    margin:0 auto;
+    margin-top:25%;
+    padding: 0;
+}
+
+.modal-content{
+    background-color: #3b4652;
+    opacity: .85;
+    padding: 0 20px;
+    box-shadow: 0px 0px 3px #848484;
+}
+.user-img{
+    margin-top: -50px;
+    margin-bottom: 35px;
+}
+
+.user-img img{
+    width: 100xp;
+    height: 100px;
+    box-shadow: 0px 0px 3px #848484;
+    border-radius: 50%;
+}
+
+.form-group input{
+    height: 42px;
+    font-size: 18px;
+    border:0;
+    padding-left: 54px;
+    border-radius: 5px;
+}
+
+.form-group::before{
+    font-family: "Font Awesome\ 5 Free";
+    position: absolute;
+    left: 28px;
+    font-size: 22px;
+    padding-top:4px;
+}
+
+.form-group#form-nombre::before{
+    content: "\f007";
+}
+
+.form-group#form-contrasenia::before{
+    content: "\f070";
+}
+
+.form-group#email-group::before{
+    content: "\f0e0";
+}
+
+.form-group#remail-group::before{
+    content: "\f2b6";
+}
+
+button{
+    width: 60%;
+    margin: 5px 0 25px;
+}
+
+.forgot{
+    padding: 5px 0;
+}
+
+.forgot a{
+    color: white;
+}
+
+/*PAGINA PRINCIPAL*/
+
+*
+{
+	margin: 0;
+	padding: 0;
+}
+.cuerpo-principal
+{
+	background-image: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)),url(../images/fondo.png);
+	background-position: center;
+	background-size: cover;
+}
+.logo
+{
+	width: 150px;
+	margin-top: 18px;
+}
+.header
+{
+	height: 10%;
+}
+.header-btn
+{
+	text-decoration: none !important;
+	border-radius: 30px;
+	padding: 7px 20px;
+	float: right;
+	margin-top: 15px;
+	color: #fff !important;
+	background: #107afd;
+	font-weight: 600;
+}
+.movie-details
+{
+	margin: 3% 0;
+}
+.left-box
+{
+	color: #fff;
+	margin: 15px 0;
+	padding: 20px;
+}
+.left-box a
+{
+	text-decoration: none !important;
+	border-radius: 30px;
+	padding: 7px 10px;
+	margin-top: 35px;
+	color: #fff !important;
+	background: #107afd;
+	font-weight: 600;
+	display: inline-block;
+	margin-right: 10px;
+
+}
+.download-btn
+{
+	border: 1px solid #fff !important;
+	background: transparent !important;
+}
+.movie-img
+{
+	height: 350px;
+	box-shadow: -4px 4px 5px 0 #000;
+}
+.series h3
+{
+	color: #fff;
+}
+.series img
+{
+	width: 100%;
+	margin-top: 15px;
+	box-shadow: -4px 4px 5px 0 #000;
+	cursor: pointer;
+	transition: 1s;
+}
+.series img:hover
+{
+	transform: translateY(-10px);
+}
+
+/* CARRITO DE COMPRA*/
+
+  #cuerpo-compra {
+	font-family: 'Barlow Condensed';
+	font-weight: 300;
+	font-size: 1rem;
+	letter-spacing: 0.5rem;
+	background-color: white;
+  }
+  
+  a:hover{
+	color: chocolate;
+  }
+  
+  .bg-dark {
+	background-color: #000000 !important;
+  }
+  
+  .bg-white {
+	background-color: white !important;
+  }
+  
+  h3,h1{
+	color: white;
+  }
+  
+  
+  /* Reserva - Formulario */
+  .lh-condensed { line-height: 1.25; }
+  
+  .reserva {
+	padding: 3rem 1rem;
+	letter-spacing: 0;
+  }
+  
+  /* Reserva - Formulario */

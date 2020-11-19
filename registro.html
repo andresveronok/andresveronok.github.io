@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinefilos.com - Registro</title>
+    
+    <!-- BOOTSTRAP-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">  
+    <!-- STYLE-->
+    <link rel="stylesheet" href="style/style.css">
+
+</head>
+<body class="cuerpo-registro">
+    <div class="modal-dialog text-center">
+        <div class="col-sm-8 main-section">
+            <div class="modal-content">
+                <div class="col-12 user-img">
+                    <img src="images/user.png">
+                </div>
+                <form id="form-registro" class="col-12">
+                    <div id="form-nombre" class="form-group">
+                        <input id="nombre" type="text" class="form-control" placeholder="Nombre de usuario" name="username" required/>
+                    </div>
+                    <div id="form-contrasenia" class="form-group">
+                        <input id="contrasenia" type="password" class="form-control" placeholder="Contraseña" name="password" required/>
+                    </div>
+                    <button id="bt-ingresar" type="button" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Ingresar </button>
+                    <button id="bt-registrarse" type="button" class="btn btn-primary"><i class="fas fa-registered"></i>  Registrarse </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--BOOTSTRAP-->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <!-- FONTAWESOME-->
+    <script src="https://kit.fontawesome.com/2803e02cc1.js" crossorigin="anonymous"></script>
+    <!-- SCRIPT-->   
+    <script src="assets/app.js"></script>
+</body>
+</html>

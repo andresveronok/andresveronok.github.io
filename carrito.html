@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- Hoja de estilos CSS -->
+    <link rel="stylesheet" href="style/style.css">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed:500,600,700&display=swap" rel="stylesheet">
+
+    <title>Cinefilos.com - Compras</title>
+
+  </head>
+  <body id="cuerpo-compra">
+    
+    <!--Cuerpo-->
+    <main class="reserva">
+      <div class="row">
+        <div  class="col-md-4 order-md-2 mb-4">
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-muted">Carrito de compras</span>
+            <span id="cantidad" class="badge badge-secondary badge-pill">0</span>
+          </h4>
+          <ul id="comprasPadre" class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Total</span>
+              <strong id="total">0</strong>
+            </li>
+          </ul>
+    
+        </div>
+        <div class="col-md-8 order-md-1">
+          <h4 class="mb-3">Datos del comprador</h4>
+          <form id="datosComprador" class="needs-validation" novalidate>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="firstName">Nombre</label>
+                  <input type="text" class="form-control" id="firstName" placeholder="" required>
+                  <div class="invalid-feedback">
+                    El nombre ingresado es incorrecto.
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="lastName">Apellido</label>
+                  <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                  <div class="invalid-feedback">
+                    El apellido ingresado es incorrecto.
+                  </div>
+                </div>
+              </div>
+  
+            <div class="mb-3">
+              <label for="email">Email <span class="text-muted">(Opcional)</span></label>
+              <input type="email" class="form-control" id="email" placeholder="tu@ejemplo.com">
+              <div class="invalid-feedback">
+                Porfavor, ingrese un email valido.
+              </div>
+            </div>
+            <hr class="mb-4">
+    
+            <h4 class="mb-3">Pago</h4>
+    
+            <div class="d-block my-3">
+              <div class="custom-control custom-radio">
+                <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+                <label class="custom-control-label" for="credit">Tarjeta de crédito</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+                <label class="custom-control-label" for="debit">Tarjeta de débito</label>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="cc-name">Nombre de la tarjeta</label>
+                <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                <small class="text-muted">Ingrese el nombre completo que aparece en la tarjeta</small>
+                <div class="invalid-feedback">
+                  Nombre de la tarjeta requerido.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="cc-number">Número de la tarjeta</label>
+                <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                <div class="invalid-feedback">
+                  Numero de la tarjeta requerido.
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 mb-3">
+                <label for="cc-expiration">Fecha de expiración</label>
+                <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                <div class="invalid-feedback">
+                  Fecha de vencimiento de la tarjeta requerido.
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="cc-cvv">Código de seguridad</label>
+                <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                <div class="invalid-feedback">
+                  Código de seguridad de la tarjeta requerido.
+                </div>
+              </div>
+            </div>
+            <hr class="mb-4">
+            <button id="boton" class="btn btn-primary btn-lg btn-block" type="submit">Continuar</button>
+          </form>
+        </div>
+      </div>
+    </main>
+    <!--Cuerpo-->
+    
+    <!--Footer-->
+    <footer>
+    
+    </footer>
+    <!--Footer-->
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!--    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="assets/app.js"></script>
+  </body>
+</html>
