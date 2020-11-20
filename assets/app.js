@@ -20,24 +20,24 @@ function Compra(cantidad, items, total){
     this.total = total;
 }
 
-let arrayUsuario = []
-let arrayTarjeta = [];
-let arrayCompra = [];
-let arrayItems = [];
-let arrayPeliculas = []
-let peliSeleccionada = ""
+var arrayUsuario = []
+var arrayTarjeta = [];
+var arrayCompra = [];
+var arrayItems = [];
+var arrayPeliculas = []
+var peliSeleccionada = ""
 
-let cantidad = 0;
-let resultado = 0;
-let precio = 300
-let total = $("#total");
+var cantidad = 1;
+var resultado = 0;
+var precio = 300
+var total = $("#total");
 
 Array.prototype.random = function () { return this[Math.floor((Math.random()*this.length))]; } 
 
 var urls = [];
 
 for (let i = 0; i < 7; i++){
-    var numero = [4125654, 7713722, 1772240, 8840338, 6754202, 5697278, 6967644].random();
+    var numero = [4125654, 1884431, 1772240, 6466002, 1979376, 2381941, 6967644, 1431045, 1637725, 1270797, 1270797, 5884052, 6823368, 4154796, 7286456, 6857112, 7343762, ].random();
     numero = "tt"+numero
     var key = "&apikey=a2b820e3";
     urls.push("http://www.omdbapi.com/?i=" + numero + key)
@@ -153,11 +153,6 @@ function mostrar(urls){
                                     $("#title").text(resultadoJson.Title)
                                     $("#actor").text("Actores: " + resultadoJson.Actors)
                                     $("#ranking").text("Ranking: " + resultadoJson.imdbRating)
-                                    item(resultadoJson.Title, "Eliminar", precio);
-                                    cantidad = cantidad + 1
-                                    $("#cantidad").html(cantidad);
-                                    resultado = resultado + precio
-                                    $("#total").html("$" + resultado);
                                     arrayPeliculas.push(resultadoJson);
                                     break;
                             }
@@ -171,6 +166,7 @@ function mostrar(urls){
                 })
 
             }  
+        console.log(arrayPeliculas)
 }
 // De izquierda a derecha
 mostrar(urls)
@@ -183,11 +179,6 @@ function agrandarPelicula(){
     $("#title").text(arrayPeliculas[0].Title)
     $("#actor").text("Actores: " + arrayPeliculas[0].Actors)
     $("#ranking").text("Ranking: " + arrayPeliculas[0].imdbRating)
-    item(arrayPeliculas[0].Title, "Eliminar", precio);
-    cantidad = cantidad + 1
-    $("#cantidad").html(cantidad);
-    resultado = resultado + precio
-    $("#total").html("$" + resultado);
 }
 $("#peli2").on("click", agrandarPelicula2)
 
@@ -197,11 +188,6 @@ function agrandarPelicula2(){
     $("#title").text(arrayPeliculas[1].Title)
     $("#actor").text("Actores: " + arrayPeliculas[1].Actors)
     $("#ranking").text("Ranking: " + arrayPeliculas[1].imdbRating)
-    item(arrayPeliculas[1].Title, "Eliminar", precio);
-    cantidad = cantidad + 1
-    $("#cantidad").html(cantidad);
-    resultado = resultado + precio
-    $("#total").html("$" + resultado);
 }
 
 $("#peli3").on("click", agrandarPelicula3)
@@ -212,7 +198,6 @@ function agrandarPelicula3(){
     $("#title").text(arrayPeliculas[2].Title)
     $("#actor").text("Actores: " + arrayPeliculas[2].Actors)
     $("#ranking").text("Ranking: " + arrayPeliculas[2].imdbRating)
-    item(arrayPeliculas[2].Title, "Eliminar", precio);
 }
 
 $("#peli4").on("click", agrandarPelicula4)
@@ -223,7 +208,6 @@ function agrandarPelicula4(){
     $("#title").text(arrayPeliculas[3].Title)
     $("#actor").text("Actores: " + arrayPeliculas[3].Actors)
     $("#ranking").text("Ranking: " + arrayPeliculas[3].imdbRating)
-    item(arrayPeliculas[3].Title, "Eliminar", precio);
 }
 
 $("#peli5").on("click", agrandarPelicula5)
@@ -234,7 +218,6 @@ function agrandarPelicula5(){
     $("#title").text(arrayPeliculas[4].Title)
     $("#actor").text("Actores: " + arrayPeliculas[4].Actors)
     $("#ranking").text("Ranking: " + arrayPeliculas[4].imdbRating)
-    item(arrayPeliculas[4].Title, "Eliminar", precio);
 }
 
 $("#peli6").on("click", agrandarPelicula6)
@@ -245,31 +228,81 @@ function agrandarPelicula6(){
     $("#title").text(arrayPeliculas[5].Title)
     $("#actor").text("Actores: " + arrayPeliculas[5].Actors)
     $("#ranking").text("Ranking: " + arrayPeliculas[5].imdbRating)
-    item(arrayPeliculas[5].Title, "Eliminar", precio);
 }
 
 $("#btn-compra").on("click", compra)
 
 function compra(){ 
-    location.href="carrito.html"
+   $.ajax({
+        url: "carrito.html",
+        type:'GET',
+        success: function(data){
+            let titulo = $("#title").html()
+            $('.cuerpo-principal').replaceWith(data)
+            $("#peli").text(titulo);
+            $("#cantidad").html(cantidad);
+           resultado = resultado + precio
+            $("#total").html("$" + resultado);
+            $("#comprasPadre").on("click", eliminarItem);
 
+            function eliminarItem(evento){
+                console.log("Hola")
+                if(evento.target.classList.contains("eliminar")){
+
+//                  var restarPrecio = evento.target.parentNode.nextSibling.innerHTML;
+//                  resultado = resultado - restarPrecio;
+                    $("#total").html("0");
+
+                    var eliminar = evento.target.parentNode.parentNode;
+                    $(eliminar).remove();
+                    cantidad = cantidad - 1;
+                    $("#cantidad").html(cantidad);        
+                }
+            }
+            
+            $("#datosComprador").on("submit", datosComprador);
+
+            function datosComprador(evento){
+                evento.preventDefault();
+                console.log(arrayUsuario);
+            
+                var nombre = $("#firstName").val();
+                var apellido = $("#lastName").val();
+            
+                var tipoTarjeta = $("#credit:checked")
+                if(tipoTarjeta == true){
+                    tipoTarjeta = "credito";
+                }else {
+                    tipoTarjeta = "debito";
+                }
+                
+                var nombreTarjeta = $("#cc-name").val();
+                var numeroTarjeta = $("#cc-number").val();
+                var fechaVencimiento = $("#cc-expiration").val();
+                var codigo = $("#cc-cvv").val();
+            
+                var item = $("li .item");
+                for (var i = 0; i < item.length; i++){
+                    arrayItems.push(item[i].innerHTML);
+                }
+            
+                let cargarUsuarioJSON = localStorage.getItem("usuario");
+                arrayUsuario = JSON.parse(cargarUsuarioJSON);
+                console.log(arrayUsuario);
+                
+                arrayCompra.push(new Compra(cantidad, arrayItems, resultado));
+                arrayTarjeta.push(new Tarjeta(nombreTarjeta, tipoTarjeta, numeroTarjeta, fechaVencimiento, codigo));
+                arrayUsuario.push(nombre, apellido,arrayTarjeta, arrayCompra)
+            
+                let guardarUsuarioJSON = JSON.stringify(arrayUsuario);
+                localStorage.setItem("usuario", guardarUsuarioJSON );
+            
+            }
+        }
+  });
 }
 
-var comprasPadre = $("#comprasPadre").on("click", eliminarItem);
-
-function eliminarItem(evento){
-    if(evento.target.classList.contains("eliminar")){
-
-        var restarPrecio = evento.target.parentNode.nextSibling.innerHTML;
-        resultado = resultado - restarPrecio;
-        $("#total").html("$" + resultado);
-
-        var eliminar = evento.target.parentNode.parentNode;
-        $(eliminar).remove();
-        cantidad = cantidad - 1;
-        $("#cantidad").html(cantidad);        
-    }
-}
+var comprasPadre = $("#comprasPadre");
 
 function item(texto1,texto2,precio){
 
@@ -289,41 +322,3 @@ function item(texto1,texto2,precio){
     comprasPadre.append(agregarLi);
 }
 
-$("#datosComprador").on("submit", datosComprador);
-
-function datosComprador(evento){
-    evento.preventDefault();
-    console.log(arrayUsuario);
-
-    var nombre = $("#firstName").val();
-    var apellido = $("#lastName").val();
-
-    var tipoTarjeta = $("#credit:checked")
-    if(tipoTarjeta == true){
-        tipoTarjeta = "credito";
-    }else {
-        tipoTarjeta = "debito";
-    }
-    
-    var nombreTarjeta = $("#cc-name").val();
-    var numeroTarjeta = $("#cc-number").val();
-    var fechaVencimiento = $("#cc-expiration").val();
-    var codigo = $("#cc-cvv").val();
-
-    var item = $("li .item");
-    for (var i = 0; i < item.length; i++){
-        arrayItems.push(item[i].innerHTML);
-    }
-
-    let cargarUsuarioJSON = localStorage.getItem("usuario");
-    arrayUsuario = JSON.parse(cargarUsuarioJSON);
-    console.log(arrayUsuario);
- 
-    arrayCompra.push(new Compra(cantidad, arrayItems, resultado));
-    arrayTarjeta.push(new Tarjeta(nombreTarjeta, tipoTarjeta, numeroTarjeta, fechaVencimiento, codigo));
-    arrayUsuario.push(nombre, apellido,arrayTarjeta, arrayCompra)
-
-    let guardarUsuarioJSON = JSON.stringify(arrayUsuario);
-    localStorage.setItem("usuario", guardarUsuarioJSON );
-
-}
