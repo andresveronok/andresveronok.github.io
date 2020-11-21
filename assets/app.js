@@ -24,8 +24,9 @@ var arrayUsuario = []
 var arrayTarjeta = [];
 var arrayCompra = [];
 var arrayItems = [];
-var arrayPeliculas = []
-var peliSeleccionada = ""
+var arrayPeliculas = [];
+var peliSeleccionada = "";
+var peliBuscar = "";
 
 var cantidad = 1;
 var resultado = 0;
@@ -112,6 +113,32 @@ function ingresar(){
         }
     }
 }
+
+
+
+$("#buscador").on("change", capturarNombre);
+
+function capturarNombre(){
+    peliBuscar = $("#buscador").val().toLowerCase();
+    peliBuscar = peliBuscar.split(' ').join('+')
+    $.ajax({
+            url: "http://www.omdbapi.com/?t=" + peliBuscar + "&apikey=a2b820e3",
+            type: "GET",
+            dataType: "json"
+        }).done(function(resultadoJson){
+            $(".movie-img").attr("src", resultadoJson.Poster);
+            $("#plot").text(resultadoJson.Plot)
+            $("#title").text(resultadoJson.Title)
+            $("#actor").text("Actores: " + resultadoJson.Actors)
+            $("#ranking").text("Ranking: " + resultadoJson.imdbRating)
+
+        }).fail( function(xhr, status, error) {  
+            console.log(xhr);
+            console.log(status);
+            console.log(error);
+        }) 
+}
+
 
 function mostrar(urls){
 
@@ -246,9 +273,7 @@ function compra(){
             $("#comprasPadre").on("click", eliminarItem);
 
             function eliminarItem(evento){
-                console.log("Hola")
                 if(evento.target.classList.contains("eliminar")){
-
 //                  var restarPrecio = evento.target.parentNode.nextSibling.innerHTML;
 //                  resultado = resultado - restarPrecio;
                     $("#total").html("0");
